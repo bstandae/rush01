@@ -12,34 +12,15 @@
 
 #include "header.h"
 
-void	fill_rows_references(char rows[4][2], char *argv[])
-{
-	int	up;
-	int	down;
-
-	up = 0;
-	down = 4;
-	while (up < 4 && down < 8)
-	{
-		rows[up][up] = argv[up];
-		rows[up][down] = argv[down];
-		up++;
-		down++;
-	}
-}
-
-void	fill_matrix(char *references[])
+void	fill_matrix(char rows_references[4][2], char columns_references[4][2])
 {
 	char	matrix[4][4];
-	char	rows_references[4][2];
 	int		row;
-	int		column;
 
 	row = 0;
-	column = 0;
 	while (row < 4)
 	{
-		fill_row(matrix[row]);
+		fill_row(matrix[row], rows_references[row]);
 		row++;
 	}
 	print_matrix(matrix);

@@ -34,8 +34,57 @@ void	print_matrix(char matrix[4][4])
 	}
 }
 
+void	fill_references(char rows[2],char columns[2], int position, char character)
+{
+	if (position < 5)
+		columns[0] = character;
+	else if (position < 9)
+		columns[1] = character;
+	else if (position < 13)
+		rows[0] = character;
+	else if (position < 17)
+		rows[1] = character;
+}
+
+void print_debug(char matrix[4][2], int rows, int columns) {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			printf("%c | ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+
 int	main(int argc, char *argv[])
 {
-	fill_matrix(argv);
+	char	rows_references[4][2];
+	char	columns_references[4][2];
+	char c = argv[1][0];
+	int	i;
+	int j;
+	int k;
+	i = 0;
+	j = 0;
+	k = 1;
+
+	while (c != '\0')
+	{
+		if (c != ' ')
+		{
+			fill_references(rows_references[j], columns_references[j], k, c);
+			k++;
+			j++;
+			if (j == 4)
+				j = 0;
+		}
+		i++;
+		c = argv[1][i];
+	}
+	printf("rows_references:\n");
+	print_debug(rows_references, 4, 2);
+	printf("\n");
+	printf("columns_references:\n");
+	print_debug(columns_references, 4, 2);
+	fill_matrix(rows_references, columns_references);
 	return (0);
 }

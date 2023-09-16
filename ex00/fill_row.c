@@ -12,17 +12,29 @@
 
 #include "header.h"
 
-void	fill_row(char row[4])
+void	fill_row(char row[4], char rows_references[2])
 {
 	int		column;
 	char	number;
 
 	column = 0;
 	number = '1';
-	while (column < 4)
+	if (rows_references[0] == '4' && rows_references[1] == '1')
 	{
-		row[column] = number;
-		column++;
-		number++;
+		while (column < 4)
+		{
+			row[column] = number;
+			column++;
+			number++;
+		}
 	}
+	else
+	{
+		while (column < 4)
+		{
+			row[column] = '0';
+			column++;
+		}
+	}
+	
 }
