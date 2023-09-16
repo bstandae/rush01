@@ -46,15 +46,6 @@ void	fill_references(char rows[2],char columns[2], int position, char character)
 		rows[1] = character;
 }
 
-void print_debug(char matrix[4][2], int rows, int columns) {
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
-			printf("%c | ", matrix[i][j]);
-		}
-		printf("\n");
-	}
-}
-
 int	main(int argc, char *argv[])
 {
 	char	rows_references[4][2];
@@ -80,11 +71,6 @@ int	main(int argc, char *argv[])
 		i++;
 		c = argv[1][i];
 	}
-	printf("rows_references:\n");
-	print_debug(rows_references, 4, 2);
-	printf("\n");
-	printf("columns_references:\n");
-	print_debug(columns_references, 4, 2);
 	fill_matrix(rows_references, columns_references);
 	return (0);
 }
